@@ -9,31 +9,70 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), // Coordinates for San Francisco
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
+    @StateObject private var locationManager: LocationManager = LocationManager()
+    
+    @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
+    
+    @State private var cardOffset: CGFloat = 0
+    @State private var isCardExpanded: Bool = false
     
     var body: some View {
-        VStack {
-            Map(coordinateRegion: $region)
-                .frame(height: 300)
-            
-            TextField("Search Locations...", text: .constant(""))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    ForEach(0..<5) { _ in
-                        DestinationBlock()
+            GeometryReader { geometry in
+                ZStack {
+                    Map(position: $position)
+                        .edgesIgnoringSafeArea(.all)
+
+                    ScrollViewReader { scrollView in
+                        VStack {
+                            TextField("Search Locations...", text: .constant(""))
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding()
+
+                            ScrollView {
+                                VStack(alignment: .leading, spacing: 20) {
+                                    ForEach(0..<20) { index in // Increased number for demonstration
+                                        DestinationBlock()
+                                            .id(index)
+                                    }
+                                }
+                                .padding()
+                            }
+                            .background(Color.white)
+                            .cornerRadius(20)
+                            .shadow(radius: 5)
+                            .offset(y: isCardExpanded ? 0 : geometry.size.height - 150 + cardOffset)
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { gesture in
+                                        let offset = gesture.translation.height
+                                        if isCardExpanded || (!isCardExpanded && offset > 0) {
+                                            self.cardOffset = offset
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        if self.cardOffset < -100 {
+                                            self.isCardExpanded = true
+                                            self.cardOffset = 0
+                                            scrollView.scrollTo(0, anchor: .top)
+                                        } else if isCardExpanded && cardOffset > 100 {
+                                            self.isCardExpanded = false
+                                            self.cardOffset = 0
+                                        } else {
+                                            self.cardOffset = 0
+                                        }
+                                    }
+                            )
+                        }
+                        .onChange(of: isCardExpanded, in) { expanded in
+                            if expanded {
+                                scrollView.scrollTo(0, anchor: .top)
+                            }
+                        }
                     }
                 }
-                .padding()
             }
         }
     }
-}
 
 struct DestinationBlock: View {
     var body: some View {
