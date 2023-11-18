@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		7B4BAF542B08E7B600ADCDD6 /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BAF532B08E7B600ADCDD6 /* LocationDataManager.swift */; };
+		7B605D262B094C6B007E2C88 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B605D252B094C6B007E2C88 /* LocationView.swift */; };
+		7B605D282B0951D4007E2C88 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B605D272B0951D4007E2C88 /* LoadingView.swift */; };
+		7B605D2B2B095221007E2C88 /* spot-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B605D2A2B095221007E2C88 /* spot-logo.png */; };
+		7B605D2D2B0955E3007E2C88 /* LocationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B605D2C2B0955E3007E2C88 /* LocationCardView.swift */; };
+		7B605D312B0962A0007E2C88 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B605D302B0962A0007E2C88 /* LocationModel.swift */; };
 		7B916B8A2B087F1B00195828 /* frontendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B916B892B087F1B00195828 /* frontendApp.swift */; };
 		7B916B8C2B087F1B00195828 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B916B8B2B087F1B00195828 /* ContentView.swift */; };
 		7B916B8E2B087F1C00195828 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B916B8D2B087F1C00195828 /* Assets.xcassets */; };
@@ -36,6 +41,11 @@
 
 /* Begin PBXFileReference section */
 		7B4BAF532B08E7B600ADCDD6 /* LocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; };
+		7B605D252B094C6B007E2C88 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		7B605D272B0951D4007E2C88 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		7B605D2A2B095221007E2C88 /* spot-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spot-logo.png"; path = "../../../../../../Downloads/firefox-downloads/spot-logo.png"; sourceTree = "<group>"; };
+		7B605D2C2B0955E3007E2C88 /* LocationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCardView.swift; sourceTree = "<group>"; };
+		7B605D302B0962A0007E2C88 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		7B916B862B087F1B00195828 /* frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frontend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B916B892B087F1B00195828 /* frontendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frontendApp.swift; sourceTree = "<group>"; };
 		7B916B8B2B087F1B00195828 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +83,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B605D292B095208007E2C88 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7B605D2A2B095221007E2C88 /* spot-logo.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		7B605D2F2B09571B007E2C88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7B916B8B2B087F1B00195828 /* ContentView.swift */,
+				7B605D2C2B0955E3007E2C88 /* LocationCardView.swift */,
+				7B605D252B094C6B007E2C88 /* LocationView.swift */,
+				7B605D272B0951D4007E2C88 /* LoadingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7B916B7D2B087F1B00195828 = {
 			isa = PBXGroup;
 			children = (
@@ -96,9 +125,10 @@
 		7B916B882B087F1B00195828 /* frontend */ = {
 			isa = PBXGroup;
 			children = (
+				7B605D2F2B09571B007E2C88 /* Views */,
+				7B605D292B095208007E2C88 /* Images */,
 				7B916BB32B0892D600195828 /* Models */,
 				7B916B892B087F1B00195828 /* frontendApp.swift */,
-				7B916B8B2B087F1B00195828 /* ContentView.swift */,
 				7B916B8D2B087F1C00195828 /* Assets.xcassets */,
 				7B916B8F2B087F1C00195828 /* Preview Content */,
 				7B4BAF532B08E7B600ADCDD6 /* LocationDataManager.swift */,
@@ -134,6 +164,7 @@
 		7B916BB32B0892D600195828 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7B605D302B0962A0007E2C88 /* LocationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -244,6 +275,7 @@
 			files = (
 				7B916B912B087F1C00195828 /* Preview Assets.xcassets in Resources */,
 				7B916B8E2B087F1C00195828 /* Assets.xcassets in Resources */,
+				7B605D2B2B095221007E2C88 /* spot-logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +301,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B916B8C2B087F1B00195828 /* ContentView.swift in Sources */,
+				7B605D2D2B0955E3007E2C88 /* LocationCardView.swift in Sources */,
+				7B605D262B094C6B007E2C88 /* LocationView.swift in Sources */,
 				7B4BAF542B08E7B600ADCDD6 /* LocationDataManager.swift in Sources */,
+				7B605D282B0951D4007E2C88 /* LoadingView.swift in Sources */,
+				7B605D312B0962A0007E2C88 /* LocationModel.swift in Sources */,
 				7B916B8A2B087F1B00195828 /* frontendApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +473,7 @@
 				DEVELOPMENT_TEAM = 574355JH3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to user location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -466,6 +503,7 @@
 				DEVELOPMENT_TEAM = 574355JH3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to user location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
