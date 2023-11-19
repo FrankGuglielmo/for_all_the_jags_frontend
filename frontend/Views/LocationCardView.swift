@@ -27,10 +27,18 @@ struct LocationCardView: View {
                 HStack{
                     Text(location.priceRange)
                         .foregroundColor(.purple)
-                    ((location.wifi)! ? ((location.freeWifi)! ? Image(systemName: "wifi") : Image("wifi.paid")) : Image(systemName: "wifi.slash")).foregroundStyle(.purple)
-                    Image(systemName: "person.3.sequence.fill", variableValue: (Double(((location.busyness)!))+0.2)/2.0).foregroundStyle(.purple)
-                    Image(systemName: "speaker.wave.3.fill",variableValue: (Double(((location.noise)!))+0.2)/2.0).foregroundStyle(.purple)
-                    Image("sofa.scale",variableValue: (Double(((location.comfort)!))+0.2)/2.0).foregroundStyle(.purple)
+                    if(location.wifi != -1){
+                        ((location.wifi)! == 1 ? ((location.freeWifi)! == 1 ? Image(systemName: "wifi") : Image("wifi.paid")) : Image(systemName: "wifi.slash")).foregroundStyle(.purple)
+                    }
+                    if(location.busyness != -1){
+                        Image(systemName: "person.3.sequence.fill", variableValue: (Double(((location.busyness)!))+0.2)/2.0).foregroundStyle(.purple)
+                    }
+                    if(location.noise != -1) {
+                        Image(systemName: "speaker.wave.3.fill",variableValue: (Double(((location.noise)!))+0.2)/2.0).foregroundStyle(.purple)
+                    }
+                    if(location.comfort != -1){
+                        Image("sofa.scale",variableValue: (Double(((location.comfort)!))+0.2)/2.0).foregroundStyle(.purple)
+                    }
                 }
                 
             }
@@ -63,11 +71,9 @@ struct LocationsScrollView: View {
 }
 
 let locations = [
-        Location(id: UUID(), latitude: 37.7749, longitude: -122.4194, name: "Haven's Coffee", priceRange: "$$", description: "Artisan coffee and pastries", locationType: .cafe, wifi: true, freeWifi: false, busyness: 1, comfort: 2, noise: 0),
-        Location(id: UUID(), latitude: 51.5074, longitude: -0.1278, name: "Grand Library", priceRange: "Free", description: "Historic library with vast collections", locationType: .library, wifi: true, freeWifi: true, busyness: 0, comfort: 2, noise: 0),
-        Location(id: UUID(), latitude: 40.7128, longitude: -74.0060, name: "TechSpace Office", priceRange: "$$$", description: "Modern coworking space", locationType: .office, wifi: true, freeWifi: false, busyness: 0, comfort: 0, noise: 1),
-        Location(id: UUID(), latitude: 48.8566, longitude: 2.3522, name: "Champs Park", priceRange: "Free", description: "Expansive park with scenic views", locationType: .park, wifi: false, freeWifi: false, busyness: 2, comfort: 1, noise: 2),
-        Location(id: UUID(), latitude: -33.8688, longitude: 151.2093, name: "Harbor Side Cafe", priceRange: "$$", description: "Cafe with a view of the harbor", locationType: .cafe, wifi: true, freeWifi: false, busyness: 1, comfort: 2, noise: 1)
+        Location(id: "cL0q9S4bqwpbAN9ZKh-Zeg", latitude: 37.77216, longitude: -122.43086, name: "Nara Restaurant & Sake Bar", priceRange: "$$", description: "Japanese restaurant", locationType: .cafe, wifi: 1, freeWifi: 0, busyness: 1, comfort: 2, noise: 0),
+        Location(id: "MmF102nQp2Tr1s0-zYni_A", latitude: 37.800992, longitude: -122.2701305, name: "Shooting Star Cafe", priceRange: "$$", description: "Chinese cafe serving bubble tea", locationType: .cafe, wifi: 1, freeWifi: 1, busyness: 0, comfort: 2, noise: 0),
+        Location(id: "oCpJB_GNLvVsZ2YP8wu2GA", latitude: 37.8082, longitude: -122.26976, name: "Palmetto", priceRange: "$", description: "Modern spot serving acai bowls", locationType: .cafe, wifi: 1, freeWifi: 1, busyness: -1, comfort: -1, noise: -1),
     ]
 
 #Preview {

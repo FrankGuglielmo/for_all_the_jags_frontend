@@ -8,7 +8,7 @@
 import Foundation
 
 struct Location: Identifiable {
-    let id: UUID
+    let id: String
     let latitude: Double
     let longitude: Double
     let name: String
@@ -17,8 +17,8 @@ struct Location: Identifiable {
     let locationType: LocationType?
     var metadata: [String: String]?
     //clare's adds<3
-    var wifi: Bool?
-    var freeWifi: Bool?
+    var wifi: Int? //should be 0-1
+    var freeWifi: Int? // should be 0-1
     var busyness: Int? //should be 0-2
     var comfort: Int? //should be 0-2
     var noise: Int? //should be 0-2

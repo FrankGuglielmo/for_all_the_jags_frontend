@@ -24,6 +24,8 @@ struct LocationView: View {
     @State private var isTimerRunning = false
     @State private var showAlert = false
     @State private var isShowingPopover: Bool = false
+    
+    @State private var buttonColor: Color = .black
 
         // Set up the camera position once the view has access to its properties
 //        init(location: Location) {
@@ -82,11 +84,12 @@ struct LocationView: View {
                 // Button Placeholder
                 Button(action: {
                     startTimer()
+                    buttonColor = .purple
                 }) {
                     Text("I'm Here")
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
-                        .background(Color.black)
+                        .background(buttonColor)
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
@@ -98,22 +101,42 @@ struct LocationView: View {
                 
                 let quality: [String] = ["not very", "pretty", "super"]
                 
-                let busyAttribute = Attribute(icon: AnyView(Image(systemName: "person.3.sequence.fill", variableValue: (Double(((location?.busyness)!))+0.2)/2.0)), title: "Busyness", description: "It's \(quality[(location?.busyness!)!]) busy", showInfoButton: true)
                 
-                let noiseAttribute = Attribute(icon: AnyView(Image(systemName: "speaker.wave.3.fill",variableValue: (Double(((location?.noise)!))+0.2)/2.0)), title: "Noise Level", description: "It's \(quality[(location?.noise!)!]) noisy", showInfoButton: true)
+                let busyAttribute = (Attribute(
+                    icon: AnyView(Image(
+                                systemName: "person.3.sequence.fill",
+                                variableValue: (location?.busyness != -1 ? ((Double(((location?.busyness)!))+0.2)/2.0) : 0))),
+                    title: "Busyness",
+                    description: location?.busyness != -1 ? "It's \(quality[location!.busyness!]) busy" : "No data",
+                    showInfoButton: false))
                 
-                let comfyAttribute = Attribute(icon: AnyView(Image("sofa.scale",variableValue: (Double(((location?.comfort)!))+0.2)/2.0)), title: "Comfort", description: "It's \(quality[(location?.comfort!)!]) comfy", showInfoButton: true)
+                let noiseAttribute = (Attribute(
+                    icon: AnyView(Image(
+                                systemName: "speaker.wave.3.fill",
+                                variableValue: (location?.noise != -1 ? ((Double(((location?.noise)!))+0.2)/2.0) : 0))),
+                    title: "Noise Level",
+                    description: location?.noise != -1 ? "It's \(quality[location!.noise!]) noisy" : "No data",
+                    showInfoButton: false))
+                
+                let comfyAttribute = (Attribute(
+                    icon: AnyView(Image(
+                        systemName: (location?.comfort != -1 ? "sofa.scale" : "chair"),
+                                variableValue: (location?.comfort != -1 ? ((Double(((location?.comfort)!))+0.2)/2.0) : 0))),
+                    title: "Comfort",
+                    description: location?.comfort != -1 ? "It's \(quality[location!.comfort!]) comfy" : "No data",
+                    showInfoButton: false))
                 
                 let priceQuality = if(location!.priceRange == "Free") {"nothing"} else if(location!.priceRange == "$") {"a little"} else if(location!.priceRange == "$$"){"a moderate amount"} else if(location!.priceRange == "$$$") {"a significant amount"} else{"a whole lot"}
                 let priceAttribute : Attribute = Attribute(icon: AnyView(Text(location!.priceRange)), title:"Price Range", description: "People typically spend \(priceQuality) here", showInfoButton: false )
                 
-                let wifiCost = ((location?.wifi)! ? ((location?.freeWifi)! ? "free" : "paid") : "no")
-                let wifiImage = ((location?.wifi)! ? ((location?.freeWifi)! ? Image(systemName: "wifi") : Image("wifi.paid")) : Image(systemName: "wifi.slash"))
+                let wifiCost = ((location?.wifi)! == 1 ? ((location?.freeWifi)! == 1 ? "free" : "paid") : "no")
+                let wifiImage = ((location?.wifi)! == 1 ?((location?.freeWifi)! == 1 ? Image(systemName: "wifi") : Image("wifi.paid")) : Image(systemName: "wifi.slash"))
                 let wifiAttribute : Attribute = Attribute(icon: AnyView(wifiImage), title: "Wifi Access", description: "There is \(wifiCost) wifi here", showInfoButton: false )
                 
                 let attributes: [Attribute] = [
                     priceAttribute, wifiAttribute, busyAttribute, noiseAttribute, comfyAttribute
                 ]
+                
                 
                 ForEach(attributes, id: \.title) { attr in
                     VStack(alignment: .leading) {
@@ -173,6 +196,7 @@ struct LocationView: View {
                // Timer callback
                isTimerRunning = false
                showAlert = true
+               buttonColor = .black
            }
 
            // Update state
@@ -182,5 +206,5 @@ struct LocationView: View {
 }
 
 #Preview {
-    LocationView(location: Location(id: UUID(), latitude: 37.7749, longitude: -122.4194, name: "Haven's Coffee", priceRange: "$$", description: "Artisan coffee and pastries", locationType: .cafe, wifi: true, freeWifi: false, busyness: 2, comfort: 3, noise: 1))
+    LocationView(location: Location(id: "cL0q9S4bqwpbAN9ZKh-Zeg", latitude: 37.7749, longitude: -122.4194, name: "Nara Restaurant & Sake Bar", priceRange: "$$", description: "Artisan coffee and pastries", locationType: .cafe, wifi: 1, freeWifi: 0, busyness: 2, comfort: 3, noise: 1))
 }
