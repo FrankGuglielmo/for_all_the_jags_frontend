@@ -16,6 +16,12 @@ struct LocationSwift: Identifiable {
     let description: String?
     let locationType: LocationType?
     var metadata: [String: String]?
+    //clare's adds<3
+    var wifi: Bool?
+    var freeWifi: Bool?
+    var busyness: Int? //should be 0-2
+    var comfort: Int? //should be 0-2
+    var noise: Int? //should be 0-2
 
     enum LocationType: String {
         case cafe
