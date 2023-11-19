@@ -13,14 +13,15 @@ struct SurveyResult {
     var comfy: Int
     var wifi: Int
     var parking: Int
-    // var timestamp: Timestamp
-    // var location : String
+    var timestamp: Date
+    var place : String
 }
 
 struct SurveyView : View{
+    @Environment(\.dismiss) var dismiss
     let location: Location?
     
-    @State private var surveyResult = SurveyResult(busy: -1, noisy: -1, comfy: -1, wifi: -1, parking: -1)
+    @State private var surveyResult = SurveyResult(busy: -1, noisy: -1, comfy: -1, wifi: -1, parking: -1, timestamp: Date(), place: "")
     
     var body: some View {
         ScrollView {
@@ -34,12 +35,16 @@ struct SurveyView : View{
                     .font(.title2)
                     .foregroundColor(.secondary)
                 
-                let qualities : [String] = ["busy", "noisy", "comfy"]
+                
+                
+                let qualities : [String] = ["busyness", "noise level", "comfort level", "wifi quality", "parking"]
                 ForEach(qualities.indices, id: \.self) { index in
-                    Text("How \(qualities[index]) is it?").font(.title3)
+                    Text("How is the: \(qualities[index])?").font(.title3)
                     HStack{
                         Button(action: {
-                            //TODO: update surveyResult, change color, make sure not multiple are selected
+                            //TODO: change color
+                            updateSurveyResult(quality: qualities[index], with: 0)
+                            
                         }) {
                             Text(":(")
                                 .frame(minWidth: 0, maxWidth: .infinity)
@@ -49,7 +54,8 @@ struct SurveyView : View{
                                 .cornerRadius(12)
                         }
                         Button(action: {
-                            //TODO: update surveyResult, change color, make sure not multiple are selected
+                            //TODO: change color
+                            updateSurveyResult(quality: qualities[index], with: 1)
                         }) {
                             Text(":|")
                                 .frame(minWidth: 0, maxWidth: .infinity)
@@ -59,7 +65,8 @@ struct SurveyView : View{
                                 .cornerRadius(12)
                         }
                         Button(action: {
-                            //TODO: update surveyResult, change color, make sure not multiple are selected
+                            //TODO: change color
+                            updateSurveyResult(quality: qualities[index], with: 2)
                         }) {
                             Text(":)")
                                 .frame(minWidth: 0, maxWidth: .infinity)
@@ -73,6 +80,10 @@ struct SurveyView : View{
                 }
                 Button(action: {
                     //TODO: BACKEND TINGS, but smth like POST(surveyResult), no?
+                    surveyResult.timestamp = Date()
+                    surveyResult.place = location!.name
+                    print(surveyResult)
+                    dismiss()
                 }) {
                     Text("Submit")
                         .frame(minWidth: 0, maxWidth: .infinity)
@@ -86,5 +97,22 @@ struct SurveyView : View{
 
             }
         }
-    
+    func updateSurveyResult(quality: String, with rating: Int){
+        if(quality == "busyness"){
+            surveyResult.busy = rating
+        } else if (quality == "noise level"){
+            surveyResult.noisy = rating
+        } else if (quality == "comfort level"){
+            surveyResult.comfy = rating
+        } else if (quality == "wifi quality"){
+            surveyResult.wifi = rating
+        } else if (quality == "parking"){
+            surveyResult.parking = rating
+        }
     }
+    
+    //TODO: do this
+    func toggleButtonColor (button: String){
+        
+    }
+}

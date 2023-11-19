@@ -109,7 +109,7 @@ struct LocationView: View {
                 
                 let wifiCost = ((location?.wifi)! ? ((location?.freeWifi)! ? "free" : "paid") : "no")
                 let wifiImage = ((location?.wifi)! ? ((location?.freeWifi)! ? Image(systemName: "wifi") : Image("wifi.paid")) : Image(systemName: "wifi.slash"))
-                let wifiAttribute :Attribute = Attribute(icon: AnyView(wifiImage), title: "Wifi Access", description: "There is \(wifiCost) wifi here", showInfoButton: false )
+                let wifiAttribute : Attribute = Attribute(icon: AnyView(wifiImage), title: "Wifi Access", description: "There is \(wifiCost) wifi here", showInfoButton: false )
                 
                 let attributes: [Attribute] = [
                     priceAttribute, wifiAttribute, busyAttribute, noiseAttribute, comfyAttribute
