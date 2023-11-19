@@ -23,18 +23,24 @@ struct ContentView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                Map(position: $position){
-                    UserAnnotation()
-                }
-                .mapControls {
-                    MapUserLocationButton()
+            ZStack {
+                VStack {
+                    //Initialize the Map here
+                    Map(position: $position){
+                        UserAnnotation()
+                    }
+                    .mapControls {
+                        MapUserLocationButton()
+                    }
+                    .frame(height: geometry.size.height / 2 + 30)
+                    .contentMargins(27)
+                    
+                    Spacer()
                 }
                 
-                // Your CardView content here
+                // Initialize the Card View for all the Cards
                 CardView()
-                    .frame(height: geometry.size.height / 2)
-                    .offset(y: cardPresented ? 0 : geometry.size.height / 2)
+                    .offset(y: cardPresented ? 50 : geometry.size.height / 2)
                     .animation(.spring(), value: cardPresented)
                     .gesture(
                         DragGesture()
@@ -46,7 +52,7 @@ struct ContentView: View {
                                 }
                             }
                             .onEnded { _ in
-                                if self.cardOffset.height < -geometry.size.height / 4 {
+                                if self.cardOffset.height < -geometry.size.height / 16 {
                                     // If dragged beyond the threshold, present the card full screen
                                     self.cardPresented = true
                                 } else {
@@ -58,17 +64,7 @@ struct ContentView: View {
                     )
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
-        }
-    }
-    
-    func cardOffsetY(for state: CardState) -> CGFloat {
-        switch state {
-            case .half:
-                return UIScreen.main.bounds.height / 2
-            case .full:
-                return 100 // or another value that represents the 'full' but not expanded state
-            case .expanded:
-                return 0 // represents the full-screen state
+            
         }
     }
 }
@@ -102,7 +98,7 @@ struct CardView: View {
 struct GrabberHandle: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 5)
-            .frame(width: 40, height: 5)
+            .frame(width: 80, height: 10)
             .foregroundColor(.gray)
             .padding(5)
     }
