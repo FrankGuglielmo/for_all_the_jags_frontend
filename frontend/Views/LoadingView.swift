@@ -36,7 +36,7 @@ struct LoadingView: View {
                         .onAppear {
                             // Simulate progress
                             Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-                                self.progress += 2
+                                self.progress += 4
                                 if self.progress >= 100 {
                                     timer.invalidate()
                                     self.isLoadingComplete = true // Trigger the transition to ContentView

@@ -35,9 +35,12 @@ struct LocationView: View {
                     .font(.title3)
                     .foregroundColor(.secondary)
 
-                
+                /* make a navigationable link / maps api / button
+                 - lock view / distance, etc.
+                 - make annotations
+                 */
                 if let location = location {
-                    Map(position: $locationPosition)
+                    Map(position: $locationPosition) //{dropPin()}
                         .frame(height: 200)
                         .cornerRadius(12)
                         .onAppear {
