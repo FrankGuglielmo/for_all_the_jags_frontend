@@ -42,7 +42,7 @@ struct LocationView: View {
                         .cornerRadius(12)
                         .onAppear {
                             self.locationPosition = .camera(
-                                MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), distance: 500, heading: 0, pitch: 0)
+                                MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: location.lat, longitude: location.lon), distance: 500, heading: 0, pitch: 0)
                             )
                         }
                 } else {
@@ -90,6 +90,6 @@ struct LocationView: View {
     }
 }
 
-#Preview {
-    LocationView(location: Location(id: UUID(), latitude: 37.7749, longitude: -122.4194, name: "Haven's Coffee", priceRange: "$$", description: "Artisan coffee and pastries", locationType: .cafe))
-}
+//#Preview {
+//    LocationView(location: LocationSwift(id: UUID(), latitude: 37.7749, longitude: -122.4194, name: "Haven's Coffee", priceRange: "$$", description: "Artisan coffee and pastries", locationType: .cafe))
+//}

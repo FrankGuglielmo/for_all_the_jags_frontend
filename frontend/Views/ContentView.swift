@@ -13,13 +13,22 @@ enum CardState {
 }
 
 struct ContentView: View {
-    @StateObject private var locationManager: LocationManager = LocationManager()
     
     @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
-    
     @State private var cardOffset = CGSize.zero
-    @State private var cardState: CardState = .half
     @State private var cardPresented = false // State to track whether the card is presented full screen or not
+    @ObservedObject private var locationViewModel = LocationViewModel()
+    
+    init() {
+        print("content view init")
+        fetchData()
+    }
+
+    func fetchData() {
+        Task {
+            await locationViewModel.fetchData()
+        }
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -39,7 +48,7 @@ struct ContentView: View {
                 }
                 
                 // Initialize the Card View for all the Cards
-                CardView()
+                CardView(locations: $locationViewModel.locations)
                     .offset(y: cardPresented ? 50 : geometry.size.height / 2)
                     .animation(.spring(), value: cardPresented)
                     .gesture(
@@ -80,6 +89,7 @@ struct MapView: UIViewRepresentable {
 }
 
 struct CardView: View {
+    @Binding var locations: [Location]
     
     var body: some View {
         RoundedRectangle(cornerRadius: 30)

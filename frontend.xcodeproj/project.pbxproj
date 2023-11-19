@@ -20,6 +20,7 @@
 		7B916B9B2B087F1C00195828 /* frontendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B916B9A2B087F1C00195828 /* frontendTests.swift */; };
 		7B916BA52B087F1C00195828 /* frontendUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B916BA42B087F1C00195828 /* frontendUITests.swift */; };
 		7B916BA72B087F1C00195828 /* frontendUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B916BA62B087F1C00195828 /* frontendUITestsLaunchTests.swift */; };
+		7BD07E392B09B51700D7E560 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7BD07E382B09B51700D7E560 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		7B916BA02B087F1C00195828 /* frontendUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = frontendUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B916BA42B087F1C00195828 /* frontendUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frontendUITests.swift; sourceTree = "<group>"; };
 		7B916BA62B087F1C00195828 /* frontendUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frontendUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7BD07E382B09B51700D7E560 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		7B916B7D2B087F1B00195828 = {
 			isa = PBXGroup;
 			children = (
+				7BD07E382B09B51700D7E560 /* .gitignore */,
 				7B916B882B087F1B00195828 /* frontend */,
 				7B916B992B087F1C00195828 /* frontendTests */,
 				7B916BA32B087F1C00195828 /* frontendUITests */,
@@ -273,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BD07E392B09B51700D7E560 /* .gitignore in Resources */,
 				7B916B912B087F1C00195828 /* Preview Assets.xcassets in Resources */,
 				7B916B8E2B087F1C00195828 /* Assets.xcassets in Resources */,
 				7B605D2B2B095221007E2C88 /* spot-logo.png in Resources */,
