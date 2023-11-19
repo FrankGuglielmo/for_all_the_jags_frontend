@@ -67,7 +67,9 @@ struct LocationView: View {
                         .cornerRadius(12)
                         .onAppear {
                             self.locationPosition = .camera(
+
                                 MapCamera(centerCoordinate: coordinate, distance: 500, heading: 0, pitch: 0)
+
                             )
                         }}
                 } else {
@@ -181,6 +183,8 @@ struct LocationView: View {
     
 }
 
+
 #Preview {
     LocationView(location: Location(id: UUID(), latitude: 37.7749, longitude: -122.4194, name: "Haven's Coffee", priceRange: "$$", description: "Artisan coffee and pastries", locationType: .cafe, wifi: true, freeWifi: false, busyness: 2, comfort: 3, noise: 1))
 }
+

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Location: Identifiable {
+struct LocationSwift: Identifiable {
     let id: UUID
     let latitude: Double
     let longitude: Double

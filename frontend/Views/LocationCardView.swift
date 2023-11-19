@@ -19,6 +19,7 @@ struct LocationCardView: View {
                 Text(location.name)
                     .font(.headline)
                     .foregroundColor(.black)
+
                 if let description = location.description {
                     Text(description)
                         .font(.subheadline)
@@ -53,7 +54,7 @@ struct LocationsScrollView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 20) {
-                ForEach(locations) { location in
+                ForEach(locations, id: \.id) { location in
                     LocationCardView(location: location)
                 }
             }
@@ -73,3 +74,4 @@ let locations = [
 #Preview {
     LocationsScrollView(locations: locations)
 }
+
