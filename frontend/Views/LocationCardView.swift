@@ -24,8 +24,15 @@ struct LocationCardView: View {
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
-                Text(location.priceRange)
-                    .foregroundColor(.green)
+                HStack{
+                    Text(location.priceRange)
+                        .foregroundColor(.purple)
+                    ((location.wifi)! ? ((location.freeWifi)! ? Image(systemName: "wifi") : Image("wifi.paid")) : Image(systemName: "wifi.slash")).foregroundStyle(.purple)
+                    Image(systemName: "person.3.sequence.fill", variableValue: (Double(((location.busyness)!))+0.2)/2.0).foregroundStyle(.purple)
+                    Image(systemName: "speaker.wave.3.fill",variableValue: (Double(((location.noise)!))+0.2)/2.0).foregroundStyle(.purple)
+                    Image("sofa.scale",variableValue: (Double(((location.comfort)!))+0.2)/2.0).foregroundStyle(.purple)
+                }
+                
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)

@@ -90,13 +90,9 @@ struct LocationView: View {
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
-                .alert(isPresented: $showAlert) {
-                            Alert(
-                                title: Text("How's the Spot?"),
-                                message: Text("Let us know in a survey! This would be a sheet instead methinks."),
-                                dismissButton: .default(Text("OK").foregroundColor(.indigo))
-                            )
-                        }
+                .sheet(isPresented: $showAlert) {
+                    SurveyView(location: location!)
+                }
 
                 .padding(.bottom, 20)
                 
@@ -173,7 +169,7 @@ struct LocationView: View {
            // Start the timer
             // TODO: would be 10 minutes or smth
             //TODO: make valid outside view// view model?
-           Timer.scheduledTimer(withTimeInterval: 30, repeats: false) { timer in
+           Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
                // Timer callback
                isTimerRunning = false
                showAlert = true
