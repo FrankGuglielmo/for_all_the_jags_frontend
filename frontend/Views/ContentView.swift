@@ -33,6 +33,7 @@ struct ContentView: View {
                         MapUserLocationButton()
                     }
                     .frame(height: geometry.size.height / 2 + 30)
+                    .contentMargins(27)
                     
                     Spacer()
                 }
