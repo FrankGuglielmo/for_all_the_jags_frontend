@@ -119,13 +119,10 @@ struct LocationView: View {
                     showInfoButton: false))
                 
                 let comfyAttribute = (Attribute(
-                    icon: AnyView(Image(
-                        systemName: (location?.comfort != -1 ? "sofa.scale" : "chair"),
-                                variableValue: (location?.comfort != -1 ? ((Double(((location?.comfort)!))+0.2)/2.0) : 0))),
+                    icon: AnyView((location?.comfort != -1 ? (Image("sofa.scale", variableValue: (Double(((location?.comfort)!))+0.2)/2.0)) : (Image(systemName: "chair")))),
                     title: "Comfort",
                     description: location?.comfort != -1 ? "It's \(quality[location!.comfort!]) comfy" : "No data",
                     showInfoButton: false))
-                
                 let priceQuality = if(location!.priceRange == "Free") {"nothing"} else if(location!.priceRange == "$") {"a little"} else if(location!.priceRange == "$$"){"a moderate amount"} else if(location!.priceRange == "$$$") {"a significant amount"} else{"a whole lot"}
                 let priceAttribute : Attribute = Attribute(icon: AnyView(Text(location!.priceRange)), title:"Price Range", description: "People typically spend \(priceQuality) here", showInfoButton: false )
                 

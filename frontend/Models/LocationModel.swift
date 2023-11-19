@@ -15,7 +15,6 @@ struct Location: Identifiable {
     let priceRange: String
     let description: String?
     let locationType: LocationType?
-    var metadata: [String: String]?
     //clare's adds<3
     var wifi: Int? //should be 0-1
     var freeWifi: Int? // should be 0-1

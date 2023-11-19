@@ -71,9 +71,9 @@ struct LocationsScrollView: View {
 }
 
 let locations = [
-        Location(id: "cL0q9S4bqwpbAN9ZKh-Zeg", latitude: 37.77216, longitude: -122.43086, name: "Nara Restaurant & Sake Bar", priceRange: "$$", description: "Japanese restaurant", locationType: .cafe, wifi: 1, freeWifi: 0, busyness: 1, comfort: 2, noise: 0),
+        Location(id: "cL0q9S4bqwpbAN9ZKh-Zeg", latitude: 37.77216, longitude: -122.43086, name: "Nara Restaurant & Sake Bar", priceRange: "$$", description: "Japanese restaurant", locationType: .cafe, wifi: 1, freeWifi: 0, busyness: 1, comfort: 1, noise: 0),
         Location(id: "MmF102nQp2Tr1s0-zYni_A", latitude: 37.800992, longitude: -122.2701305, name: "Shooting Star Cafe", priceRange: "$$", description: "Chinese cafe serving bubble tea", locationType: .cafe, wifi: 1, freeWifi: 1, busyness: 0, comfort: 2, noise: 0),
-        Location(id: "oCpJB_GNLvVsZ2YP8wu2GA", latitude: 37.8082, longitude: -122.26976, name: "Palmetto", priceRange: "$", description: "Modern spot serving acai bowls", locationType: .cafe, wifi: 1, freeWifi: 1, busyness: -1, comfort: -1, noise: -1),
+        Location(id: "oCpJB_GNLvVsZ2YP8wu2GA", latitude: 37.783098, longitude: -122.461591, name: "Palmetto", priceRange: "$", description: "Modern spot serving acai bowls", locationType: .cafe, wifi: 1, freeWifi: 1, busyness: -1, comfort: -1, noise: -1),
     ]
 
 #Preview {
